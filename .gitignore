@@ -1,52 +1,56 @@
-# Prerequisites
-*.d
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+int main()
+{
+	int n;
+	int num;
+	int sommaPositivi=0;
+	int sommaNegativi=0;
+	int conteggioNegativi=0;
+	int conteggioPositivi=0;
+	float mediaPositivi;
+	float mediaNegativi;
+	
+	printf("Inserisci la quantita' di numeri da leggere: ");
+	scanf("%d", &n);
+	
+	for(int i=0; i<n; i++)
+	{
+		printf("Inserisci il %d numero: ", i+1);
+		scanf("%d", &num);
+		
+		if(num>0)
+		{
+			sommaPositivi+=num;
+			conteggioPositivi++;
+		}
+		else
+		{
+			sommaNegativi+=num;
+			conteggioNegativi++;
+		}
+	}
+	if(conteggioPositivi>0)
+	{
+		mediaPositivi=(float)sommaPositivi/conteggioPositivi;
+		printf("somma dei numeri positivi: %d\n", sommaPositivi);
+		printf("Numeri positivi inseriti: %d\n", conteggioPositivi);
+		printf("La media è: %.2f\n", mediaPositivi);
+	}
+	else
+	{
+		printf("Non sno stati inseriti numeri positivi");
+	}
+	if(conteggioNegativi>0)
+	{
+		mediaNegativi=(float)sommaNegativi/conteggioNegativi;
+		printf("somma dei numeri negativi: %d\n", sommaNegativi);
+		printf("Numeri negativi inseriti: %d\n", conteggioNegativi);
+		printf("La media è: %.2f\n", mediaNegativi);
+	}
+	else
+	{
+		printf("Non sono stati Inseriti numeri negativi");
+	}
+return 0;
+}
